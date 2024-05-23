@@ -6,8 +6,9 @@ import sys
 
 class Sensor:
 
-    def __init__(self, light, person, vehicle):
-        self.state1 = [0 ,light , person, vehicle]
+    #Sensor class initialization with default state condition of: "green", "no", "no", for light, person, vehicle, respectively.
+    def __init__(self, light = "green", person = "no", vehicle = "no"):
+        self.state1 = [0 ,light, person, vehicle]
 
     # update_status(self, change,change_to_what) takes itself, what to change (e.g. light, person, vehicle), and what it changes to and updates
     # the state of the object to reflect those changes. It returns nothing, but modifies the properties of the object.
@@ -35,10 +36,11 @@ def print_message(sensor):
 def main():
     print("\n***ENSF 692 Car Vision Detector Processing Program***\n")
     
-    # Creating an object of type sensor with default state condition of: "green", "no", "no", for light, person, vehicle, respectively.
-    sense = Sensor("green", "no", "no")
+    # Creating an object of type sensor
+    sense = Sensor()
     
-    # Both valid* tuples are to validate vision input, they are the only acceptable inputs.
+    # Both valid* tuples are to validate vision input, they are the only acceptable inputs. 
+    # This avoides ValueError exceptions when combined with a while loop.
     validVisionChange = ("green", "red", "yellow", "yes", "no")
     validVisionInput = ("0", "1", "2", "3")
 
